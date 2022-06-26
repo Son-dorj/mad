@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             Document document=documentBuilder.parse(is);
             StringBuilder stringBuilder=new StringBuilder();
             stringBuilder.append("XML DATA");
-            stringBuilder.append("\n ------------");
+            stringBuilder.append("\n----------");
             NodeList nodeList=document.getElementsByTagName("place");
             for(int i=0; i<nodeList.getLength();i++){
                 Node node = nodeList.item(i);
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
                     stringBuilder.append("\n Longitude:").append(getValue("long",element));
                     stringBuilder.append("\n Temperature:").append(getValue("temperature",element));
 
-                    stringBuilder.append("\n humidity").append(getValue("humidity",element));
-                    stringBuilder.append("\n ---------");
+                    stringBuilder.append("\n Humidity:").append(getValue("humidity",element));
+                    stringBuilder.append("\n----------");
                 }
             }
             display.setText(stringBuilder.toString());
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             json = new String(buffer, StandardCharsets.UTF_8);
             JSONArray jsonArray = new JSONArray(json);
             stringBuilder.append("JSON DATA");
-            stringBuilder.append("\n -------");
+            stringBuilder.append("\n----------");
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 stringBuilder.append("\n Name:").append(jsonObject.getString("name"));
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 stringBuilder.append("\n Longitude:").append(jsonObject.getString("long"));
                 stringBuilder.append("\n Temperature:").append(jsonObject.getString("temperature"));
                 stringBuilder.append("\n Humidity:").append(jsonObject.getString("humidity"));
-                stringBuilder.append("\n ---------");
+                stringBuilder.append("\n----------");
             }
             display.setText(stringBuilder.toString());
             is.close();
